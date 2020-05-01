@@ -1,0 +1,161 @@
+﻿
+input 형식
+닫는 태그 없어도 됨
+<input type name value action>
+                  확인  php파일
+
+value : 내용
+metond:어떤 방법으로 보낼지
+action :어디에
+post: php에서 html에서 받아온것을 사용함
+radio: 같은 name이면 자동으로 그룹핑됨
+check box: 다중선택가능   cheked속성 정하기 가능
+reset :
+type-butten
+
+echo$ _GET
+
+
+링크 만드는 법 
+a=kim 
+b=hello 일때
+a.php?a=kim&b=hello
+
+image : i이미지 전송하는 버튼
+
+hidden : 사용자에게는 보이지 않지만 서버로 전송된다.
+<input type="hidden" name="name" value="kim">
+
+submit : 제출 버튼
+
+
+alert("") : 경고창 (웹페이지 메세지)
+onkick : 클릭 이벤트가 발생되면 나옴
+onkick = alert("내용")
+서비스 프로토콜 ://
+
+-textarea
+<textarea name ="' rows ="" cols=""> </textarea>
+rows :  행     cols : 열 (입력창크기 조정)
+
+
+콤보박스select
+<select name = "cars ">
+    <option value ="bmw">bmw</option>
+    .
+    .
+    </select>
+
+
+check에서 먼저 선택되어이 ㅆ고 싶을때
+cheked\
+
+-하이퍼 링크
+<a href = url> 링크이름 </a>
+    옵션
+    target >>연결된 주소를 어디로 보내줄지   <a herf = url target =""> </a>
+    target="_blank" >>새창에
+    _안쓰면 black라는 이름을 가진 창에 나오게 함
+    target ="_self" >>쓰던 창에
+
+    값 넘기기
+    board.php?ID=
+    a.php?myid = kim&mypw =1234
+    변수명 = 값 
+    test.html ?id=<?=$id?>
+
+파일 업로드
+    파일 첨부 : post 방식으로 
+    entyce ="multi"
+
+    -전역배열 $_files
+    $_FILES["file"]["name"]
+    $_FILES["file"]["error"] : 에러의 인덱스 값을 가져올 수 있음
+
+    . : currant
+    .. : perrant
+
+    업로드 디렉토리 확인
+    $uploads_dir ='./uploads';
+    $fied_name = 'upload';
+    //upload디렉토리가 없다면 생성
+
+    if(!is_dir($uploads_dir)){  //ture임
+        if(mkdir($uploads,07777)){
+            die("업로드 디렉토리 생성에 실패했습니다.");
+            //die : php에서 오류문장을 출력함
+            //exit : 프로그렘을 빠져나감
+        }
+    }
+
+    isset : 셋팅 된 값들중 값이 있는지
+
+    if(!isset($_FILES[$field_name])){
+        die("업로드된 파일이 없습니다.");
+    }
+    //변수정ㄹ리
+    $error =
+
+    if($_error != )
+
+
+    pathinfo()함수
+    파일경로에 관한정보를 배열로 보내줌
+    $path_part = pathinfo("주소");
+
+    echo $path_part['dirname'] ;  //  /www/htdocs/inc
+
+    $uploads_dir : ./upload : 업로드 할 서버 디렉토리 및 파일명
+    $upload_file = $uploads_dir.'/'.$name;
+
+    $file_name='upload';
+    $fileinfo = pathinfo($upload_file); //첨부바일의 정보를 가져옴
+
+    $ext = strtolower($fileinfo['extendsion']);
+    strtolower : 소문자로 바꿔주는 함수
+
+    while(is_file($uploads_dir)){
+            //중복된 이름이면 넘버링 해주는거
+    }
+파일업로드
+
+ bool move_uploded_file(string$filename , string $destionaion)
+ //서버로 전송된 파일을 저장할 때 사용하는 함수
+
+  bool move_uploded_file($_FILES)
+
+
+  웹페이지에 이미지 표시하는 태그 : <img src="url  width = 150 height =50">
+  맥스파일사이즈 0.2로 만든다읆 큰거 넣어도 되는지
+
+isset함수
+    isset함수에 써준것이 있는지 없는지 알려줌
+    (있으면 투루 없으면 폴즈)
+
+  쿠키
+  setcookie()함수
+  bool setcookie (string name , string value, int expire, string path )
+  name : 쿠키 이르밍며 대문자와 소문자를 구분
+  value : 쿠키값이며 사요자의 컴퓨터에 저장된다.
+  expire : 쿠키유효 시간이며 초 단위로 표시함 (파일의 유효시간을 정함) ex:time()+60*60*24*30 >> 30동안 쿠키값 유지 )
+
+
+쿠키 읽기
+ $_COOKIE['쿠키값']
+
+ isset()
+ bool isset($var);  변수값 설정여부 확인
+
+if (isset($_COOKIE["userid"])&&isset($_COOKIE["usernaeme"]))  있는지 없는지 확인
+
+  time함수 
+  형식 : int time()
+  반환값 :성공 현재시간
+   쿠키 관련 코드는 <html>코드 앞에 써줌
+
+쿠키 >> 사용자 컴퓨터에 저장 :개인화된 정보
+세션 >> 서버에 저장되는 정보 : 다음에 접속했을때 없어짐 임시적으로 서버에 저장됨
+많이 쓸수록 서버의 부하가 걸림 보안에 더 좋음
+
+>>필요에 따라서 사용
+      
